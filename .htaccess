@@ -1,0 +1,5 @@
+Options -Indexes
+
+<FilesMatch "^(leads\.csv|leads\.json|server_config\.py|server\.py|.*\.md|.*\.txt)$">
+  Require all denied
+</FilesMatch>

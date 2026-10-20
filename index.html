@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карго из Китая под ключ — договор, страховка, фиксированная цена</title>
+  <meta name="description" content="Доставка грузов из Китая в Россию: авто, ЖД, авиа, море. Договор с юрлицом, страховка 100% стоимости, фотоотчёт со склада. Расчёт стоимости за 1 минуту.">
+  <meta property="og:title" content="Карго из Китая под ключ — с договором и страховкой">
+  <meta property="og:description" content="Рассчитайте доставку за 1 минуту. Фиксируем цену в договоре.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta name="color-scheme" content="light">
+  <meta name="format-detection" content="telephone=no">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ ПОЛОСА ДЕДЛАЙНА (реальное расписание отправок из config) ============ -->
+<div class="topbar" id="topbar">
+  <div class="container topbar__inner">
+    <span class="topbar__dot"></span>
+    <span>Ближайшая отправка со склада в <b data-cfg="warehouseCity">Гуанчжоу</b>: <b id="nextDepartureDate">—</b>. Приём груза закрывается через</span>
+    <span class="countdown" id="topCountdown">--:--:--</span>
+    <a href="#quiz" class="topbar__link">Успеть в эту машину →</a>
+  </div>
+</div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#" class="logo" aria-label="Опт-Логистик — на главную">
+      <img class="logo__image" src="logo.png" alt="Опт-Логистик" width="280" height="70">
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#calc">Калькулятор</a>
+      <a href="#methods">Способы доставки</a>
+      <a href="#process">Как работаем</a>
+      <a href="#guarantee">Гарантии</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="header__contacts">
+      <a class="header__phone" data-cfg-href="tel" data-cfg="phone" href="tel:+79005653383">+7 900 565-33-83</a>
+      <a class="btn btn--tg btn--sm" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9.8 15.6l-.4 5.3c.6 0 .8-.2 1.1-.5l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.5 0 11.3 1.2 11.7l5.4 1.7L19 5.6c.6-.4 1.1-.2.7.2"/></svg>
+        Написать
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO + КАЛЬКУЛЯТОР ============ -->
+<section class="hero" id="calc">
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <div class="pill" id="heroPill">🇨🇳 → 🇷🇺 Белая доставка для бизнеса и селлеров</div>
+      <h1 id="heroTitle">Карго из Китая <span class="accent">с договором</span> и ценой, которая не вырастет по дороге</h1>
+      <p class="hero__sub" id="heroSub">Забираем у поставщика, проверяем и фотографируем товар на складе, страхуем на 100% стоимости и привозим до двери. Цену фиксируем в договоре — никаких «доплат за таможню» по прибытии.</p>
+
+      <ul class="hero__bullets">
+        <li><span class="check">✓</span> Договор с ООО и закрывающие документы</li>
+        <li><span class="check">✓</span> Фото и видео груза до отправки — бесплатно</li>
+        <li><span class="check">✓</span> Страховка груза на 100% стоимости</li>
+        <li><span class="check">✓</span> Менеджер на связи в Telegram с 9 до 21</li>
+      </ul>
+
+      <div class="hero__actions">
+        <a class="btn btn--tg btn--lg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M9.8 15.6l-.4 5.3c.6 0 .8-.2 1.1-.5l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.5 0 11.3 1.2 11.7l5.4 1.7L19 5.6c.6-.4 1.1-.2.7.2"/></svg>
+          Написать менеджеру
+        </a>
+      </div>
+
+      <div class="hero__stats" hidden>
+        <div><b data-cfg="stats.years">6</b><span>лет возим из Китая</span></div>
+        <div><b data-cfg="stats.tons">4 200+</b><span>тонн доставлено</span></div>
+        <div><b data-cfg="stats.clients">1 300+</b><span>клиентов</span></div>
+      </div>
+    </div>
+
+    <!-- Калькулятор: вовлечение + эффект «моего расчёта» -->
+    <div class="calc card" id="calculator">
+      <div class="calc__head">
+        <h2>Рассчитайте доставку</h2>
+        <span class="calc__badge">≈ 30 секунд</span>
+      </div>
+
+      <label class="field">
+        <span>Что везёте</span>
+        <select id="calcCategory">
+          <option value="general">Товары народного потребления</option>
+          <option value="clothes">Одежда, обувь, текстиль</option>
+          <option value="electronics">Электроника, гаджеты</option>
+          <option value="fragile">Хрупкое: стекло, керамика</option>
+          <option value="parts">Автозапчасти, оборудование</option>
+          <option value="brand">Брендовые товары</option>
+        </select>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Вес, кг</span>
+          <input type="number" id="calcWeight" value="300" min="1" step="1" inputmode="numeric">
+        </label>
+        <label class="field">
+          <span>Объём, м³</span>
+          <input type="number" id="calcVolume" value="1.5" min="0.01" step="0.1" inputmode="decimal">
+        </label>
+      </div>
+
+      <div class="field">
+        <span>Способ доставки</span>
+        <div class="seg" id="calcMethod">
+          <button type="button" data-method="auto" class="active" aria-pressed="true">Авто</button>
+          <button type="button" data-method="rail" aria-pressed="false">ЖД</button>
+          <button type="button" data-method="air" aria-pressed="false">Авиа</button>
+          <button type="button" data-method="sea" aria-pressed="false">Море</button>
+        </div>
+      </div>
+
+      <div class="calc__result" id="calcResult">
+        <div class="calc__price">
+          <span class="calc__label">Предварительно</span>
+          <b id="resPrice">—</b>
+          <small id="resPriceUsd">—</small>
+        </div>
+        <div class="calc__meta">
+          <div><span>Срок</span><b id="resDays">—</b></div>
+          <div><span>За кг</span><b id="resPerKg">—</b></div>
+          <div><span>Плотность</span><b id="resDensity">—</b></div>
+        </div>
+        <div class="calc__saving" id="resSaving" hidden></div>
+      </div>
+
+      <button class="btn btn--primary btn--block btn--lg" id="calcCta">Зафиксировать цену в договоре</button>
+      <p class="calc__note">Точную стоимость менеджер пришлёт за 15 минут. Расчёт ни к чему не обязывает.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЛОГОТИПЫ / ДОВЕРИЕ ============ -->
+<section class="trustbar">
+  <div class="container trustbar__inner">
+    <span class="trustbar__title">Возим для селлеров и компаний:</span>
+    <div class="trustbar__items">
+      <span>Wildberries</span><span>Ozon</span><span>Яндекс Маркет</span><span>Розница</span><span>Производство</span><span>Опт</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ БОЛИ (неприятие потерь) ============ -->
+<section class="section" id="pains">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Почему на карго теряют деньги</span>
+      <h2>5 ситуаций, из-за которых доставка обходится вдвое дороже обещанного</h2>
+      <p>Если с вами было хотя бы одно из этого — вы знаете, о чём мы.</p>
+    </div>
+    <div class="pains">
+      <div class="pain">
+        <div class="pain__ico">💸</div>
+        <h3>«Доплатите за таможню»</h3>
+        <p>Груз уже в Москве, а карго просит ещё 30–40% сверху. Не заплатите — товар не отдадут.</p>
+        <div class="pain__fix">У нас: цена в договоре окончательная</div>
+      </div>
+      <div class="pain">
+        <div class="pain__ico">📦</div>
+        <h3>Пришёл брак или не тот товар</h3>
+        <p>Поставщик отгрузил остатки, а увидели вы это только на своём складе.</p>
+        <div class="pain__fix">У нас: фото и видео каждой партии на складе в Китае</div>
+      </div>
+      <div class="pain">
+        <div class="pain__ico">🫥</div>
+        <h3>Менеджер пропал</h3>
+        <p>Деньги отправлены, а «карго из Telegram» не отвечает третью неделю.</p>
+        <div class="pain__fix">У нас: договор с ООО, офис и реквизиты на сайте</div>
+      </div>
+      <div class="pain">
+        <div class="pain__ico">🧾</div>
+        <h3>Нет документов</h3>
+        <p>Товар нельзя поставить на баланс и продавать на маркетплейсе без вопросов.</p>
+        <div class="pain__fix">У нас: закрывающие документы для бухгалтерии</div>
+      </div>
+      <div class="pain">
+        <div class="pain__ico">💥</div>
+        <h3>Груз повредили — «сами виноваты»</h3>
+        <p>Без страховки компенсацию не получить, даже если коробки раздавили при перегрузке.</p>
+        <div class="pain__fix">У нас: страховка на 100% стоимости</div>
+      </div>
+      <div class="pain pain--cta">
+        <h3>Посчитайте, сколько стоит доставка без сюрпризов</h3>
+        <a href="#calc" class="btn btn--primary">Открыть калькулятор</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ СПОСОБЫ ДОСТАВКИ (якорь + эффект компромисса) ============ -->
+<section class="section section--alt" id="methods">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Способы доставки</span>
+      <h2>Выберите баланс скорости и цены</h2>
+      <p>Тарифы для товаров народного потребления при плотности 200 кг/м³. Для вашего груза — в калькуляторе.</p>
+    </div>
+    <div class="methods" id="methodsGrid"><!-- рендерится из config --></div>
+  </div>
+</section>
+
+<!-- ============ СРАВНЕНИЕ ============ -->
+<section class="section" id="compare">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Сравните</span>
+      <h2>Чем мы отличаемся от «дешёвого карго» из объявлений</h2>
+    </div>
+    <div class="compare card">
+      <div class="compare__row compare__row--head">
+        <div></div><div>Типичное карго</div><div class="compare__us" data-cfg="brand">КаргоМост</div>
+      </div>
+      <div class="compare__row"><div>Договор</div><div class="no">Устная договорённость в мессенджере</div><div class="yes">Договор с ООО, реквизиты открыты</div></div>
+      <div class="compare__row"><div>Итоговая цена</div><div class="no">Меняется по прибытии</div><div class="yes">Фиксируется до отправки</div></div>
+      <div class="compare__row"><div>Проверка товара</div><div class="no">Нет или за доплату</div><div class="yes">Фото и видео бесплатно</div></div>
+      <div class="compare__row"><div>Страховка</div><div class="no">Нет</div><div class="yes">100% стоимости груза</div></div>
+      <div class="compare__row"><div>Документы</div><div class="no">Нет</div><div class="yes">Закрывающие для бухгалтерии</div></div>
+      <div class="compare__row"><div>Отслеживание</div><div class="no">«Едет, ждите»</div><div class="yes">Статусы на каждом этапе</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПРОЦЕСС (снижение неопределённости) ============ -->
+<section class="section section--alt" id="process">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Как работаем</span>
+      <h2>6 шагов — и груз у вас</h2>
+      <p>От вас нужна только заявка. Остальное делаем мы.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="step__n">1</span><h3>Заявка и расчёт</h3><p>Присылаете ссылку на товар или данные груза — через 15 минут получаете точную цену.</p><span class="step__time">15 минут</span></li>
+      <li class="step"><span class="step__n">2</span><h3>Договор</h3><p>Фиксируем цену, сроки и ответственность. Работаем с ИП, ООО и физлицами.</p><span class="step__time">1 день</span></li>
+      <li class="step"><span class="step__n">3</span><h3>Забор у поставщика</h3><p>Забираем груз у фабрики или с рынка. Можем выкупить товар с 1688, Taobao, Poizon.</p><span class="step__time">1–3 дня</span></li>
+      <li class="step"><span class="step__n">4</span><h3>Проверка и фото</h3><p>Пересчитываем, проверяем на брак, присылаем фото и видео. Переупаковываем при необходимости.</p><span class="step__time">1 день</span></li>
+      <li class="step"><span class="step__n">5</span><h3>Доставка и таможня</h3><p>Отправляем выбранным способом, проходим таможню, держим вас в курсе статусов.</p><span class="step__time">7–60 дней</span></li>
+      <li class="step"><span class="step__n">6</span><h3>Получение</h3><p>Привозим на ваш склад, в ПВЗ или на склад маркетплейса. Передаём документы.</p><span class="step__time">по графику</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ЧТО ВХОДИТ В ЦЕНУ (прозрачность) ============ -->
+<section class="section" id="included">
+  <div class="container included">
+    <div>
+      <span class="eyebrow">Прозрачная цена</span>
+      <h2>Что уже входит в стоимость</h2>
+      <p class="muted">Мы не показываем «от 1 $/кг», чтобы потом добавить десять доплат. Вот что вы получаете за цену из калькулятора:</p>
+    </div>
+    <ul class="included__list">
+      <li><span class="check">✓</span> Хранение на складе в Китае до 14 дней</li>
+      <li><span class="check">✓</span> Пересчёт мест и фотоотчёт</li>
+      <li><span class="check">✓</span> Стандартная упаковка: скотч + мешок</li>
+      <li><span class="check">✓</span> Таможенное оформление</li>
+      <li><span class="check">✓</span> Доставка до терминала в Москве</li>
+      <li><span class="check">✓</span> Сопровождение менеджером</li>
+      <li class="opt"><span class="plus">+</span> Обрешётка, паллетирование — по запросу</li>
+      <li class="opt"><span class="plus">+</span> Страховка — 1–3% от стоимости товара</li>
+      <li class="opt"><span class="plus">+</span> Доставка по РФ и на склады МП — по тарифу ТК</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ОТЗЫВЫ (рендерятся из config, скрываются, если пусто) ============ -->
+<section class="section section--alt" id="reviews">
+  <div class="container">
+    <div class="section__head">
+      <span class="eyebrow">Отзывы</span>
+      <h2>Что говорят клиенты</h2>
+    </div>
+    <div class="reviews" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ ГАРАНТИИ (снятие риска) ============ -->
+<section class="section" id="guarantee">
+  <div class="container">
+    <div class="guarantee card">
+      <div class="guarantee__seal">
+        <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+      </div>
+      <div class="guarantee__body">
+        <h2>Берём риски на себя — и прописываем это в договоре</h2>
+        <div class="guarantee__grid">
+          <div><h3>Фиксированная цена</h3><p>Если итоговая сумма окажется выше согласованной — разницу оплачиваем мы.</p></div>
+          <div><h3>Сохранность груза</h3><p>Утеря или повреждение застрахованного груза — компенсация до 100% стоимости.</p></div>
+          <div><h3>Сроки</h3><p>Задержали доставку по нашей вине дольше оговорённого — скидка на следующую отправку.</p></div>
+        </div>
+        <p class="guarantee__legal">Условия ответственности указаны в договоре перевозки. Образец договора пришлём до оплаты.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КВИЗ-ЗАЯВКА (эффект Зейгарник + постепенное вовлечение) ============ -->
+<section class="section section--dark" id="quiz">
+  <div class="container quiz-wrap">
+    <div class="quiz-wrap__text">
+      <span class="eyebrow eyebrow--light">Точный расчёт</span>
+      <h2>Ответьте на 3 вопроса — пришлём расчёт с тремя вариантами доставки</h2>
+      <ul class="quiz-wrap__perks">
+        <li>📋 Сравнение авто, ЖД и авиа для вашего груза</li>
+        <li>🎁 Бонус: чек-лист «12 проверок поставщика перед оплатой»</li>
+        <li>🔒 Не передаём контакты третьим лицам, не спамим</li>
+      </ul>
+      <div class="quiz-wrap__deadline">
+        <span>Чтобы успеть в отправку <b id="quizDepartureDate">—</b>, оставьте заявку в течение</span>
+        <b class="countdown countdown--big" id="quizCountdown">--:--:--</b>
+      </div>
+    </div>
+
+    <form class="quiz card" id="quizForm" novalidate>
+      <div class="quiz__progress"><div class="quiz__bar" id="quizBar"></div></div>
+      <div class="quiz__step-label" id="quizStepLabel">Шаг 1 из 4</div>
+
+      <!-- шаг 1 -->
+      <fieldset class="quiz__step active" data-step="1">
+        <legend>Что нужно доставить?</legend>
+        <div class="options">
+          <label class="opt-card"><input type="radio" name="cargo" value="Товары для маркетплейса"><span>🛍️ Товары для маркетплейса</span></label>
+          <label class="opt-card"><input type="radio" name="cargo" value="Оптовая партия"><span>📦 Оптовая партия</span></label>
+          <label class="opt-card"><input type="radio" name="cargo" value="Оборудование / станки"><span>⚙️ Оборудование, станки</span></label>
+          <label class="opt-card"><input type="radio" name="cargo" value="Другое"><span>✏️ Другое</span></label>
+        </div>
+      </fieldset>
+
+      <!-- шаг 2 -->
+      <fieldset class="quiz__step" data-step="2">
+        <legend>Примерный объём партии?</legend>
+        <div class="options">
+          <label class="opt-card"><input type="radio" name="volume" value="До 100 кг"><span>До 100 кг</span></label>
+          <label class="opt-card"><input type="radio" name="volume" value="100–500 кг"><span>100–500 кг</span></label>
+          <label class="opt-card"><input type="radio" name="volume" value="500 кг – 2 т"><span>500 кг – 2 т</span></label>
+          <label class="opt-card"><input type="radio" name="volume" value="Больше 2 т / контейнер"><span>Больше 2 т / контейнер</span></label>
+        </div>
+      </fieldset>
+
+      <!-- шаг 3 -->
+      <fieldset class="quiz__step" data-step="3">
+        <legend>Что важнее?</legend>
+        <div class="options">
+          <label class="opt-card"><input type="radio" name="priority" value="Минимальная цена"><span>💰 Минимальная цена</span></label>
+          <label class="opt-card"><input type="radio" name="priority" value="Баланс цены и срока"><span>⚖️ Баланс цены и срока</span></label>
+          <label class="opt-card"><input type="radio" name="priority" value="Как можно быстрее"><span>⚡ Как можно быстрее</span></label>
+          <label class="opt-card"><input type="radio" name="priority" value="Нужна консультация"><span>🤔 Не знаю, посоветуйте</span></label>
+        </div>
+      </fieldset>
+
+      <!-- шаг 4 -->
+      <fieldset class="quiz__step" data-step="4">
+        <legend>Куда прислать расчёт?</legend>
+        <p class="quiz__almost">Почти готово — расчёт уже формируется 👍</p>
+        <label class="field"><span>Имя</span><input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться"></label>
+        <label class="field"><span>Телефон или Telegram</span><input type="text" name="contact" autocomplete="tel" placeholder="+7 900 000-00-00 или @username" required></label>
+        <label class="field"><span>Город доставки</span><input type="text" name="city" placeholder="Москва"></label>
+        <input type="hidden" name="calc" id="quizCalc">
+        <label class="consent"><input type="checkbox" name="consent" checked required> <span>Согласен на обработку персональных данных согласно <a href="#" data-cfg-href="privacy">политике</a></span></label>
+      </fieldset>
+
+      <div class="quiz__nav">
+        <button type="button" class="btn btn--ghost" id="quizBack" hidden>← Назад</button>
+        <button type="button" class="btn btn--primary" id="quizNext" disabled>Далее →</button>
+        <button type="submit" class="btn btn--primary" id="quizSubmit" hidden>Получить расчёт</button>
+      </div>
+
+      <div class="quiz__done" id="quizDone" hidden>
+        <div class="quiz__done-ico">✅</div>
+        <h3>Заявка принята!</h3>
+        <p>Менеджер свяжется с вами в течение 15 минут в рабочее время. Быстрее всего — написать нам в Telegram:</p>
+        <a class="btn btn--tg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Открыть Telegram</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FAQ (снятие возражений) ============ -->
+<section class="section" id="faq">
+  <div class="container container--narrow">
+    <div class="section__head">
+      <span class="eyebrow">Вопросы</span>
+      <h2>Отвечаем честно</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Это «белая» доставка или карго?</summary><p>Работаем в двух форматах. «Белая» — с оформлением на ваше юрлицо, оплатой пошлин и НДС и полным пакетом документов. Карго — консолидированная доставка, где таможенное оформление берёт на себя перевозчик; дешевле, документы — договор и акт услуг. Подберём формат под вашу задачу и честно расскажем о рисках каждого.</p></details>
+      <details><summary>Какой минимальный объём?</summary><p>Авиа — от 10 кг, авто и ЖД — от 30 кг или 0,2 м³. Небольшие партии отправляем сборным грузом, вы платите только за свой объём.</p></details>
+      <details><summary>Почему цена в калькуляторе «предварительная»?</summary><p>Итог зависит от точной плотности, упаковки и категории товара. Менеджер уточнит детали и пришлёт окончательную цену, которую мы зафиксируем в договоре до отправки.</p></details>
+      <details><summary>Что если груз повредят или потеряют?</summary><p>Застрахованный груз компенсируем до 100% стоимости по инвойсу. Без страховки — в пределах ответственности перевозчика по договору. Рекомендуем страховать всегда: это 1–3% стоимости товара.</p></details>
+      <details><summary>Можете выкупить товар у поставщика?</summary><p>Да. Выкупаем с 1688, Taobao, Poizon и у фабрик, проверяем поставщика, при необходимости ведём переговоры на китайском.</p></details>
+      <details><summary>Как платить?</summary><p>Безналичный расчёт по счёту для ИП и ООО, перевод для физлиц. Оплата доставки — частями: предоплата и остаток по прибытии груза в РФ.</p></details>
+      <details><summary>Доставляете на склады Wildberries и Ozon?</summary><p>Да. Маркируем, переупаковываем по требованиям маркетплейса и довозим до нужного склада.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ФИНАЛЬНЫЙ CTA ============ -->
+<section class="final">
+  <div class="container final__inner">
+    <div>
+      <h2>Пришлите ссылку на товар — посчитаем доставку за 15 минут</h2>
+      <p>Бесплатно и без обязательств. Если найдём способ дешевле, чем у вашего текущего карго, — покажем.</p>
+    </div>
+    <div class="final__btns">
+      <a class="btn btn--tg btn--lg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+      <a class="btn btn--primary btn--lg" href="#quiz">Оставить заявку</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ПОДВАЛ (реквизиты = доверие) ============ -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <div class="logo logo--light"><img class="logo__image logo__image--footer" src="logo.png" alt="Опт-Логистик" width="280" height="70"></div>
+      <p class="footer__legal" data-cfg="legal">ООО «Название» · ИНН 0000000000 · ОГРН 0000000000000</p>
+      <p class="footer__legal" data-cfg="address">г. Москва, ул. Примерная, д. 1, офис 1</p>
+      <p class="footer__legal" data-cfg="director">Генеральный директор: Старостин Алексей Анатольевич</p>
+      <p class="footer__legal" data-cfg="activity">Деятельность вспомогательная прочая, связанная с перевозками (52.29)</p>
+      <p class="footer__legal">Наименование на английском: <span data-cfg="englishName">OPT LOGISTICS</span></p>
+      <p class="footer__legal">Дата регистрации: <span data-cfg="registrationDate">16 февраля 2026 года</span></p>
+    </div>
+    <div>
+      <h4>Контакты</h4>
+      <a data-cfg-href="tel" data-cfg="phone" href="tel:+79005653383">+7 900 565-33-83</a>
+      <a data-cfg-href="mailto" data-cfg="email" href="mailto:info@opt-logistic.com">info@opt-logistic.com</a>
+      <a data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+    </div>
+    <div>
+      <h4>Склады в Китае</h4>
+      <p data-cfg="warehouses">Гуанчжоу · Иу · Шэньчжэнь</p>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© <span id="year"></span> <span data-cfg="brand">КаргоМост</span></span>
+    <a href="#" data-cfg-href="privacy">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+<!-- ============ ЛИПКАЯ ПАНЕЛЬ НА МОБИЛЬНЫХ ============ -->
+<div class="mobile-bar">
+  <a class="btn btn--tg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+  <a class="btn btn--primary" href="#quizForm">Рассчитать</a>
+</div>
+
+<!-- ============ EXIT-INTENT: лид-магнит (взаимность) ============ -->
+<div class="modal" id="exitModal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__box card">
+    <button class="modal__close" data-close aria-label="Закрыть">×</button>
+    <div class="modal__ico">📋</div>
+    <h3>Заберите чек-лист перед уходом</h3>
+    <p>«12 проверок поставщика и карго перед оплатой» — то, что мы проверяем сами, прежде чем отправить деньги в Китай.</p>
+    <form id="exitForm" style="margin-top:14px; text-align:left;">
+      <div class="field" style="margin-bottom:10px;">
+        <input type="text" name="contact" placeholder="+7 900 000-00-00 или @username" required style="width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:10px; font-size:15px;">
+      </div>
+      <button type="submit" class="btn btn--primary btn--block">Получить чек-лист</button>
+    </form>
+    <div style="margin:10px 0; font-size:13px; color:var(--muted); text-align:center;">или перейдите сразу в Telegram:</div>
+    <a class="btn btn--tg btn--block btn--sm" data-cfg-href="telegramChecklist" href="#" target="_blank" rel="noopener">Открыть чек-лист в Telegram</a>
+    <button type="button" class="modal__skip" data-close>Нет, спасибо</button>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

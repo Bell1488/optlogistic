@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+leads.csv
+leads.json
+.env
+.env.*
