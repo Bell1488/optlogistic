@@ -6,8 +6,8 @@ window.CONFIG = {
   phone: '+7 900 565-33-83',
   phoneRaw: '+79005653383',
   email: 'info@opt-logistic.com',
-  telegram: 'cargo_manager',            // username без @
-  telegramChecklist: 'cargo_manager',   // бот/канал, где выдаётся чек-лист (можно тот же)
+  telegram: 'cargo_manager_official',            // username без @
+  telegramChecklist: 'cargo_manager_official',   // ссылка для Telegram-кнопки чек-листа
   max: 'https://max.ru/u/f9LHodD0cOJwHwwEl7zZ1q24VLJZnsEX_86Oy6-JdjIa4qDYqKG2D9SdlIY',
   privacyUrl: 'privacy.html',           // политика конфиденциальности
 
