@@ -1,6 +1,6 @@
 # Деплой сайта на opt-logistic.com
 
-Инструкция рассчитана на VPS с Ubuntu 22.04/24.04, публичным IPv4, Nginx и отдельным SOCKS5-прокси. Домен должен быть зарегистрирован и доступен для управления DNS.
+Инструкция рассчитана на VPS с Ubuntu 22.04/24.04, публичным IPv4, Nginx и отдельным SOCKS5-прокси. Все команды и процесс приложения выполняются от root. Это менее безопасно, чем отдельный пользователь приложения: при уязвимости в сервере атакующий может получить root-доступ. Домен должен быть зарегистрирован и доступен для управления DNS.
 
 ## 1. DNS домена
 
@@ -24,43 +24,40 @@ dig +short www.opt-logistic.com A
 
 ## 2. Подготовка VPS
 
-Подключитесь по SSH от имени пользователя с `sudo`:
+Подключитесь по SSH непосредственно под `root`:
 
 ```bash
-ssh USER@SERVER_IP
-sudo apt update
-sudo apt install -y nginx python3 python3-venv git curl certbot python3-certbot-nginx
+ssh root@SERVER_IP
+apt update
+apt install -y nginx python3 python3-venv git curl certbot python3-certbot-nginx
 ```
 
 Откройте только SSH, HTTP и HTTPS в облачном firewall и UFW (если он используется):
 
 ```bash
-sudo ufw allow OpenSSH
-sudo ufw allow 'Nginx Full'
-sudo ufw enable
+ufw allow OpenSSH
+ufw allow 'Nginx Full'
+ufw enable
 ```
 
 Порт `8085` наружу не открывайте: приложение слушает только localhost, Nginx проксирует трафик локально.
 
 ## 3. Установка сайта
 
-Создайте системного пользователя приложения и каталог:
+Создайте каталог приложения:
 
 ```bash
-sudo adduser --system --group --home /opt/optlogistic --shell /usr/sbin/nologin optlogistic
-sudo mkdir -p /opt/optlogistic/app
-sudo chown -R optlogistic:optlogistic /opt/optlogistic
+mkdir -p /opt/optlogistic/app
 ```
 
 Установите проект из GitHub:
 
 ```bash
-sudo -u optlogistic git clone --branch main https://github.com/Bell1488/optlogistic.git /opt/optlogistic/app
+git clone --branch main https://github.com/Bell1488/optlogistic.git /opt/optlogistic/app
 cd /opt/optlogistic/app
-sudo python3 -m venv .venv
-sudo .venv/bin/pip install --upgrade pip
-sudo .venv/bin/pip install -r requirements.txt
-sudo chown -R optlogistic:optlogistic /opt/optlogistic/app
+python3 -m venv .venv
+.venv/bin/pip install --upgrade pip
+.venv/bin/pip install -r requirements.txt
 ```
 
 ## 4. Telegram и SOCKS5H
@@ -70,7 +67,7 @@ sudo chown -R optlogistic:optlogistic /opt/optlogistic/app
 Создайте закрытый конфиг, не публикуйте его в Git:
 
 ```bash
-sudo nano /opt/optlogistic/app/server_config.py
+nano /opt/optlogistic/app/server_config.py
 ```
 
 Заполните значения в файле:
@@ -91,9 +88,9 @@ LEADS_JSON_FILE = "/var/lib/optlogistic/leads.json"
 Создайте защищенное хранилище лидов и назначьте права:
 
 ```bash
-sudo install -d -o optlogistic -g optlogistic -m 700 /var/lib/optlogistic
-sudo chown optlogistic:optlogistic /opt/optlogistic/app/server_config.py
-sudo chmod 600 /opt/optlogistic/app/server_config.py
+install -d -o root -g root -m 700 /var/lib/optlogistic
+chown root:root /opt/optlogistic/app/server_config.py
+chmod 600 /opt/optlogistic/app/server_config.py
 ```
 
 Если имя пользователя/пароль SOCKS содержит `@`, `:`, `/` или специальные символы, URL-кодируйте их либо используйте отдельные учетные данные без этих символов.
@@ -103,7 +100,7 @@ sudo chmod 600 /opt/optlogistic/app/server_config.py
 Создайте службу systemd:
 
 ```bash
-sudo nano /etc/systemd/system/optlogistic.service
+nano /etc/systemd/system/optlogistic.service
 ```
 
 Содержимое:
@@ -116,8 +113,6 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=optlogistic
-Group=optlogistic
 WorkingDirectory=/opt/optlogistic/app
 ExecStart=/opt/optlogistic/app/.venv/bin/python /opt/optlogistic/app/server.py
 Restart=on-failure
@@ -134,10 +129,10 @@ WantedBy=multi-user.target
 Запустите и проверьте сервис:
 
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable --now optlogistic
-sudo systemctl status optlogistic --no-pager
-sudo journalctl -u optlogistic -n 50 --no-pager
+systemctl daemon-reload
+systemctl enable --now optlogistic
+systemctl status optlogistic --no-pager
+journalctl -u optlogistic -n 50 --no-pager
 curl -I http://127.0.0.1:8085/
 ```
 
@@ -148,7 +143,7 @@ curl -I http://127.0.0.1:8085/
 Создайте конфигурацию сайта:
 
 ```bash
-sudo nano /etc/nginx/sites-available/opt-logistic.com
+nano /etc/nginx/sites-available/opt-logistic.com
 ```
 
 ```nginx
@@ -172,9 +167,9 @@ server {
 Включите конфигурацию:
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/opt-logistic.com /etc/nginx/sites-enabled/opt-logistic.com
-sudo nginx -t
-sudo systemctl reload nginx
+ln -s /etc/nginx/sites-available/opt-logistic.com /etc/nginx/sites-enabled/opt-logistic.com
+nginx -t
+systemctl reload nginx
 ```
 
 Убедитесь, что `http://opt-logistic.com` открывает страницу, прежде чем выпускать сертификат.
@@ -184,8 +179,8 @@ sudo systemctl reload nginx
 Выпустите сертификат Let's Encrypt:
 
 ```bash
-sudo certbot --nginx -d opt-logistic.com -d www.opt-logistic.com
-sudo certbot renew --dry-run
+certbot --nginx -d opt-logistic.com -d www.opt-logistic.com
+certbot renew --dry-run
 ```
 
 Certbot настроит HTTPS и перенаправление с HTTP. После этого проверьте `https://opt-logistic.com` и `https://www.opt-logistic.com`.
@@ -209,7 +204,7 @@ curl --socks5-hostname PROXY_HOST:1080 https://api.telegram.org
 Проверьте логи:
 
 ```bash
-sudo journalctl -u optlogistic -f
+journalctl -u optlogistic -f
 ```
 
 Права на резервные копии ограничены каталогом `700`. Настройте регулярную резервную копию `/var/lib/optlogistic` вне VPS.
@@ -220,10 +215,10 @@ sudo journalctl -u optlogistic -f
 
 ```bash
 cd /opt/optlogistic/app
-sudo -u optlogistic git pull --ff-only origin main
-sudo -u optlogistic .venv/bin/pip install -r requirements.txt
-sudo systemctl restart optlogistic
-sudo systemctl status optlogistic --no-pager
+git pull --ff-only origin main
+.venv/bin/pip install -r requirements.txt
+systemctl restart optlogistic
+systemctl status optlogistic --no-pager
 ```
 
 Не перезаписывайте `server_config.py` при обновлении: там находятся секреты и настройки продакшена.
