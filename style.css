@@ -17,6 +17,7 @@
   --red: #e5484d;
   --red-soft: #fdecec;
   --tg: #229ed9;
+  --max: #1677e8;
   --radius: 8px;
   --shadow: 0 5px 18px rgba(21, 39, 32, .06);
   --shadow-lg: 0 16px 42px rgba(21, 39, 32, .11);
@@ -62,6 +63,8 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
 .btn--outline:hover { border-color: var(--accent); color: var(--accent); }
 .btn--ghost { background: transparent; color: var(--muted); }
 .btn--tg { background: var(--tg); color: #fff; }
+.btn--max { background: var(--max); color: #fff; }
+.btn--max:hover { background: #0d63c9; box-shadow: 0 8px 20px rgba(22, 119, 232, .22); }
 .btn--sm { padding: 9px 14px; font-size: 14px; }
 .btn--lg { padding: 17px 28px; font-size: 16px; }
 .btn--block { width: 100%; }
@@ -88,6 +91,7 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
 .nav a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
 .nav a:hover { color: var(--ink); }
 .header__contacts { display: flex; align-items: center; gap: 14px; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .header__phone { font: 700 16px 'Manrope', sans-serif; text-decoration: none; }
 
 /* ---------- Hero ---------- */
@@ -341,11 +345,14 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
   .final__btns { width: 100%; }
   .final__btns .btn { flex: 1; }
   .footer__bottom { flex-direction: column; gap: 10px; }
+  .header__contacts { gap: 6px; }
+  .header__contacts .btn { padding: 8px 9px; font-size: 13px; }
   .mobile-bar {
-    display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
     padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line);
     box-shadow: 0 -6px 24px rgba(11, 27, 51, .08);
   }
+  .mobile-bar .btn { padding-left: 8px; padding-right: 8px; font-size: 13px; }
 }
 
 @media (max-width: 380px) {
@@ -354,7 +361,8 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
   .seg button { font-size: 12px; }
   .calc__meta { gap: 4px; }
   .calc__meta b { font-size: 13px; }
-  .mobile-bar { padding-left: 10px; padding-right: 10px; }
+  .mobile-bar { padding-left: 10px; padding-right: 10px; gap: 6px; }
+  .logo__image { width: 150px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<noscript><div><img src="https://mc.yandex.ru/watch/113700526" style="position:absolute; left:-9999px;" alt=""></div></noscript>
 
 <!-- ============ ПОЛОСА ДЕДЛАЙНА (реальное расписание отправок из config) ============ -->
 <div class="topbar" id="topbar">
@@ -50,6 +51,7 @@
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9.8 15.6l-.4 5.3c.6 0 .8-.2 1.1-.5l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.5 0 11.3 1.2 11.7l5.4 1.7L19 5.6c.6-.4 1.1-.2.7.2"/></svg>
         Написать
       </a>
+      <a class="btn btn--max btn--sm" data-cfg-href="max" href="#" target="_blank" rel="noopener">MAX</a>
     </div>
   </div>
 </header>
@@ -76,6 +78,7 @@
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M9.8 15.6l-.4 5.3c.6 0 .8-.2 1.1-.5l2.6-2.5 5.4 4c1 .5 1.7.3 2-.9l3.6-17c.3-1.5-.6-2.1-1.6-1.7L1.4 9.9C0 10.5 0 11.3 1.2 11.7l5.4 1.7L19 5.6c.6-.4 1.1-.2.7.2"/></svg>
           Написать менеджеру
         </a>
+        <a class="btn btn--max btn--lg" data-cfg-href="max" href="#" target="_blank" rel="noopener">Написать в MAX</a>
       </div>
 
       <div class="hero__stats" hidden>
@@ -382,7 +385,10 @@
         <div class="quiz__done-ico">✅</div>
         <h3>Заявка принята!</h3>
         <p>Менеджер свяжется с вами в течение 15 минут в рабочее время. Быстрее всего — написать нам в Telegram:</p>
-        <a class="btn btn--tg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Открыть Telegram</a>
+        <div class="contact-actions">
+          <a class="btn btn--tg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Открыть Telegram</a>
+          <a class="btn btn--max" data-cfg-href="max" href="#" target="_blank" rel="noopener">Открыть MAX</a>
+        </div>
       </div>
     </form>
   </div>
@@ -416,6 +422,7 @@
     </div>
     <div class="final__btns">
       <a class="btn btn--tg btn--lg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+      <a class="btn btn--max btn--lg" data-cfg-href="max" href="#" target="_blank" rel="noopener">MAX</a>
       <a class="btn btn--primary btn--lg" href="#quiz">Оставить заявку</a>
     </div>
   </div>
@@ -439,7 +446,10 @@
       <h4>Контакты</h4>
       <a data-cfg-href="tel" data-cfg="phone" href="tel:+79005653383">+7 900 565-33-83</a>
       <a data-cfg-href="mailto" data-cfg="email" href="mailto:info@opt-logistic.com">info@opt-logistic.com</a>
-      <a data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+      <div class="contact-actions">
+        <a data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+        <a data-cfg-href="max" href="#" target="_blank" rel="noopener">MAX</a>
+      </div>
     </div>
     <div>
       <h4>Склады в Китае</h4>
@@ -455,6 +465,7 @@
 <!-- ============ ЛИПКАЯ ПАНЕЛЬ НА МОБИЛЬНЫХ ============ -->
 <div class="mobile-bar">
   <a class="btn btn--tg" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+  <a class="btn btn--max" data-cfg-href="max" href="#" target="_blank" rel="noopener">MAX</a>
   <a class="btn btn--primary" href="#quizForm">Рассчитать</a>
 </div>
 

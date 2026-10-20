@@ -25,13 +25,17 @@
     m[i].l=1*new Date();
     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=" + C.metrikaId, "ym");
 
     ym(C.metrikaId, "init", {
+      ssr: true,
       clickmap: true,
       trackLinks: true,
       accurateTrackBounce: true,
-      webvisor: true
+      webvisor: true,
+      ecommerce: "dataLayer",
+      referrer: document.referrer,
+      url: location.href
     });
   }
 
@@ -134,6 +138,7 @@
     mailto: 'mailto:' + (C.email || ''),
     telegram: 'https://t.me/' + (C.telegram || ''),
     telegramChecklist: 'https://t.me/' + (C.telegramChecklist || C.telegram || ''),
+    max: C.max || '',
     privacy: C.privacyUrl || '#'
   };
   $$('[data-cfg-href]').forEach((el) => { const h = hrefs[el.dataset.cfgHref]; if (h) el.href = h; });
@@ -142,6 +147,7 @@
   // Трекинг кликов по прямым контактам (Макро-цели для Директа)
   $$('a[href^="tel:"]').forEach((a) => a.addEventListener('click', () => goal('click_phone')));
   $$('a[href*="t.me"]').forEach((a) => a.addEventListener('click', () => goal('click_telegram')));
+  $$('a[href*="max.ru"]').forEach((a) => a.addEventListener('click', () => goal('click_max')));
 
   /* ===================================================================
      4. ТАЙМЕР РЕАЛЬНОГО ЗАКРЫТИЯ РЕЙСА СО СКЛАДА В ГУАНЧЖОУ

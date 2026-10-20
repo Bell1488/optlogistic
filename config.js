@@ -8,6 +8,7 @@ window.CONFIG = {
   email: 'info@opt-logistic.com',
   telegram: 'cargo_manager',            // username без @
   telegramChecklist: 'cargo_manager',   // бот/канал, где выдаётся чек-лист (можно тот же)
+  max: 'https://max.ru/u/f9LHodD0cOJwHwwEl7zZ1q24VLJZnsEX_86Oy6-JdjIa4qDYqKG2D9SdlIY',
   privacyUrl: 'privacy.html',           // политика конфиденциальности
 
   legal: 'ООО «ОПТ ЛОГИСТИКА» · ОГРН 1267700050034 · ИНН 9715522820 · КПП 771501001',
@@ -55,7 +56,7 @@ window.CONFIG = {
   formEndpoint: '/api/lead',
 
   // Номер счетчика Яндекс Метрики (например: 98765432). Код Метрики подключится автоматически!
-  metrikaId: null,
+  metrikaId: 113700526,
 
   /* Отзывы. ПРИМЕРЫ — ЗАМЕНИТЕ РЕАЛЬНЫМИ (выдуманные отзывы = недостоверная реклама).
      Если массив пустой, блок отзывов скрывается. */
