@@ -418,10 +418,14 @@
     const result = await sendLeadToServer(data);
     if (!result.ok) {
       fallbackToMessenger(data);
+      goal('lead_messenger_fallback', { yclid: data.yclid });
     }
 
-    // Главная МАКРО-цель для Яндекс.Директа
-    goal('lead_form', { yclid: data.yclid, contact: data.contact });
+    // Главная МАКРО-цель: считаем только подтвержденный прием заявки сервером.
+    // Контактные данные не передаем в Метрику.
+    if (result.ok && result.json && result.json.saved !== false) {
+      goal('lead_form', { yclid: data.yclid });
+    }
     sessionStorage.setItem('cargoLead', '1');
 
     $$('.quiz__step, .quiz__nav, .quiz__progress, .quiz__step-label', f).forEach((el) => (el.hidden = true));
@@ -447,9 +451,12 @@
       const result = await sendLeadToServer(data);
       if (!result.ok) {
         fallbackToMessenger(data);
+        goal('lead_messenger_fallback', { yclid: data.yclid });
       }
 
-      goal('lead_exit', { yclid: data.yclid, contact: contactVal });
+      if (result.ok && result.json && result.json.saved !== false) {
+        goal('lead_exit', { yclid: data.yclid });
+      }
       sessionStorage.setItem('cargoLead', '1');
 
       exitForm.innerHTML = '<div style="color:var(--green); font-weight:700; padding:10px 0; text-align:center;">✓ Чек-лист отправлен! Менеджер свяжется с вами в течение 15 минут.</div>';
