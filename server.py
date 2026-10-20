@@ -37,7 +37,7 @@ except ImportError:
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 SAVE_LOCK = threading.Lock()
 MAX_BODY_BYTES = 64 * 1024
-PUBLIC_FILES = {'/', '/index.html', '/style.css', '/script.js', '/config.js', '/privacy.html', '/logo.png', '/hero-back.png'}
+PUBLIC_FILES = {'/', '/index.html', '/style.css', '/script.js', '/config.js', '/privacy.html', '/logo.png', '/hero-back.png', '/pic-ico.png'}
 RATE_LIMIT = 20
 RATE_WINDOW = 60
 RATE_STATE = {}
