@@ -377,29 +377,9 @@
         return { ok: true, json };
       }
     } catch (e) {
-      console.warn('Backend endpoint unavailable, falling back:', e);
+      console.warn('Lead API request failed:', e);
     }
     return { ok: false };
-  }
-
-  function fallbackToMessenger(data) {
-    const lines = [
-      '📦 Новая заявка с сайта Карго:',
-      data.cargo ? `• Груз: ${data.cargo}` : null,
-      data.volume ? `• Объем: ${data.volume}` : null,
-      data.priority ? `• Приоритет: ${data.priority}` : null,
-      data.calc ? `• Расчет: ${data.calc}` : null,
-      data.name ? `• Имя: ${data.name}` : null,
-      data.contact ? `• Контакт: ${data.contact}` : null,
-      data.city ? `• Город: ${data.city}` : null,
-      data.yclid ? `• YCLID: ${data.yclid}` : null
-    ].filter(Boolean);
-
-    const text = lines.join('\n');
-    const url = 'https://t.me/' + C.telegram + '?text=' + encodeURIComponent(text);
-    const popup = window.open(url, '_blank', 'noopener');
-    if (!popup) window.location.href = url;
-    return true;
   }
 
   // Обработка основной квиз-формы
@@ -423,8 +403,7 @@
 
     const result = await sendLeadToServer(data);
     if (!result.ok) {
-      fallbackToMessenger(data);
-      goal('lead_messenger_fallback', { yclid: data.yclid });
+      goal('lead_api_error', { yclid: data.yclid });
     }
 
     sessionStorage.setItem('cargoLead', '1');
@@ -451,8 +430,7 @@
 
       const result = await sendLeadToServer(data);
       if (!result.ok) {
-        fallbackToMessenger(data);
-        goal('lead_messenger_fallback', { yclid: data.yclid });
+        goal('lead_api_error', { yclid: data.yclid });
       }
 
       if (result.ok && result.json && result.json.saved !== false) {

@@ -521,7 +521,7 @@ https://opt-logistic.com/?utm_source=yandex&utm_medium=cpc&utm_campaign={campaig
 - `click_phone`, `click_telegram`, `click_max` — контакты;
 - `quiz_start`, `quiz_step_2`, `quiz_step_3`, `quiz_contact_focus` — этапы квиза;
 - `calc_interact`, `calc_method_change`, `calc_cta_click` — взаимодействие с калькулятором;
-- `lead_messenger_fallback` — резервный переход при недоступном API;
+- `lead_api_error` — API не подтвердил сохранение заявки; только диагностика, не цель оптимизации;
 - `scroll_50`, `scroll_90` — глубина просмотра.
 
 В стратегии МК выбирайте только `lead_form`. Микроцели и клики оставляйте для отчётов: они не подтверждают реальную заявку.
