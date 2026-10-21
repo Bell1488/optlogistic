@@ -306,6 +306,7 @@
   const total = steps.length;
   let cur = 1;
   const next = $('#quizNext'), back = $('#quizBack'), submit = $('#quizSubmit');
+  let quizSubmitting = false;
 
   function showStep(n) {
     cur = n;
@@ -404,16 +405,21 @@
   // Обработка основной квиз-формы
   $('#quizForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (quizSubmitting) return;
     const f = e.target;
     const contact = f.contact.value.trim();
     if (contact.length < 5) { f.contact.focus(); f.contact.classList.add('invalid'); return; }
     if (!f.consent.checked) { f.consent.focus(); return; }
 
-    const data = await collectLeadData(f);
-    data.source = 'Квиз-форма (основная)';
-
+    quizSubmitting = true;
     submit.disabled = true;
     submit.textContent = 'Отправляем заявку…';
+
+    // Считаем конверсию по отправке валидной формы, не дожидаясь API/Telegram.
+    goal('lead_form', { yclid: urlParams.get('yclid') || '' });
+
+    const data = await collectLeadData(f);
+    data.source = 'Квиз-форма (основная)';
 
     const result = await sendLeadToServer(data);
     if (!result.ok) {
@@ -421,11 +427,6 @@
       goal('lead_messenger_fallback', { yclid: data.yclid });
     }
 
-    // Главная МАКРО-цель: считаем только подтвержденный прием заявки сервером.
-    // Контактные данные не передаем в Метрику.
-    if (result.ok && result.json && result.json.saved !== false) {
-      goal('lead_form', { yclid: data.yclid });
-    }
     sessionStorage.setItem('cargoLead', '1');
 
     $$('.quiz__step, .quiz__nav, .quiz__progress, .quiz__step-label', f).forEach((el) => (el.hidden = true));
