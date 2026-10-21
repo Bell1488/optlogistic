@@ -195,7 +195,10 @@
 
   function renderCalc() {
     const w = Math.max(1, parseFloat($('#calcWeight').value) || 0);
-    const v = Math.max(0.01, parseFloat($('#calcVolume').value) || 0);
+    const currentVolume = Math.max(0.01, parseFloat($('#calcVolume').value) || 0);
+    // Поддерживаем объём пропорционально заданной плотности.
+    // Пользователь может изменить объём вручную, после чего он сохраняется.
+    const v = Math.max(0.01, currentVolume);
     const cat = $('#calcCategory').value;
     const r = calc(w, v, cat, method);
 
@@ -222,13 +225,13 @@
 
     const summary = M[method].name + ', ' + w + ' кг, ' + v + ' м³, ' + $('#calcCategory').selectedOptions[0].text + ', ≈ ' + fmtRub(r.rub);
     $('#quizCalc').value = summary;
-    try { localStorage.setItem('cargoCalc', JSON.stringify({ w, v, cat, method })); } catch (e) {}
+    try { localStorage.setItem('cargoCalc', JSON.stringify({ version: 2, w, v, cat, method })); } catch (e) {}
   }
 
   // Восстановление прошлого расчета
   try {
     const saved = JSON.parse(localStorage.getItem('cargoCalc') || 'null');
-    if (saved && M[saved.method]) {
+    if (saved && saved.version === 2 && M[saved.method]) {
       $('#calcWeight').value = saved.w; $('#calcVolume').value = saved.v;
       $('#calcCategory').value = saved.cat; method = saved.method;
     }
@@ -249,7 +252,14 @@
     goal('calc_method_change', { method: b.dataset.method });
   }));
 
-  ['#calcWeight', '#calcVolume', '#calcCategory'].forEach((s) => $(s).addEventListener('input', () => {
+  $('#calcWeight').addEventListener('input', () => {
+    const w = Math.max(1, parseFloat($('#calcWeight').value) || 0);
+    $('#calcVolume').value = (w / (C.lightDensity || 200)).toFixed(2);
+    renderCalc();
+    goal('calc_interact');
+  });
+
+  ['#calcVolume', '#calcCategory'].forEach((s) => $(s).addEventListener('input', () => {
     renderCalc();
     goal('calc_interact');
   }));
@@ -265,15 +275,16 @@
   /* ===================================================================
      6. СПОСОБЫ ДОСТАВКИ
      =================================================================== */
-  const order = ['air', 'auto', 'rail', 'sea'].filter((k) => M[k]);
+  const order = ['auto', 'rail', 'air', 'sea'].filter((k) => M[k]);
   $('#methodsGrid').innerHTML = order.map((k) => {
     const m = M[k];
+    const perKg = String(m.perKg);
     return '<div class="method' + (m.highlight ? ' method--hl' : '') + '">' +
       (m.highlight ? '<span class="method__badge">Оптимальный выбор</span>' : '') +
       '<div class="method__ico">' + m.icon + '</div>' +
       '<h3>' + m.name + '</h3>' +
       '<p class="method__tag">' + m.tagline + '</p>' +
-      '<div class="method__price">от <b>$' + m.perKg.toFixed(1) + '</b>/кг</div>' +
+      '<div class="method__price">от <b>$' + perKg + '</b>/кг</div>' +
       '<div class="method__rub">≈ ' + Math.round(m.perKg * C.usdRate) + ' ₽/кг</div>' +
       '<ul><li>Срок: <b>' + m.days[0] + '–' + m.days[1] + ' дней</b></li><li>Минимум: <b>' + m.minKg + ' кг</b></li></ul>' +
       '<button class="btn ' + (m.highlight ? 'btn--primary' : 'btn--outline') + ' btn--block" data-pick="' + k + '">Рассчитать</button>' +

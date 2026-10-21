@@ -24,25 +24,25 @@ window.CONFIG = {
   stats: { enabled: false },
 
   // Курс для пересчёта в рубли
-  usdRate: 95,
+  usdRate: 93,
 
   /* Тарифы, $ за кг при плотности ~200 кг/м³.
      perM3 — цена за м³ для лёгких грузов (плотность < lightDensity).
      Итог = max(вес * perKg, объём * perM3) * коэффициент категории. */
   lightDensity: 200,
   methods: {
-    auto: { name: 'Авто',  icon: '🚚', perKg: 2.9, perM3: 520, days: [18, 25], minKg: 30,
+    auto: { name: 'Авто',  icon: '🚚', perKg: 2.1, perM3: 380, days: [15, 22], minKg: 30,
             tagline: 'Оптимально по цене и сроку', highlight: true },
-    rail: { name: 'ЖД',    icon: '🚆', perKg: 2.3, perM3: 420, days: [30, 40], minKg: 30,
+    rail: { name: 'ЖД',    icon: '🚆', perKg: 1.7, perM3: 310, days: [25, 35], minKg: 30,
             tagline: 'Дешевле авто на крупных партиях' },
-    air:  { name: 'Авиа',  icon: '✈️', perKg: 7.5, perM3: 1250, days: [7, 12], minKg: 10,
+    air:  { name: 'Авиа',  icon: '✈️', perKg: 5.8, perM3: 950, days: [5, 9], minKg: 10,
             tagline: 'Когда товар нужен срочно' },
-    sea:  { name: 'Море',  icon: '🚢', perKg: 1.2, perM3: 230, days: [45, 60], minKg: 500,
+    sea:  { name: 'Море',  icon: '🚢', perKg: 0.95, perM3: 180, days: [40, 55], minKg: 500,
             tagline: 'Для контейнеров и тяжёлых грузов' }
   },
 
   categories: {
-    general: 1.0, clothes: 1.0, electronics: 1.25, fragile: 1.35, parts: 1.1, brand: 1.6
+    general: 1.0, parts: 1.05, fragile: 1.10, clothes: 1.15, electronics: 1.15, brand: 1.25
   },
 
   /* Расписание отправок со склада (время Китая, UTC+8).
