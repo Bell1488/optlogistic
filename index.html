@@ -40,14 +40,19 @@
     <a href="#" class="logo" aria-label="Опт-Логистик — на главную">
       <img class="logo__image" src="logo.png" alt="Опт-Логистик" width="280" height="70">
     </a>
-    <nav class="nav" aria-label="Основная навигация">
+    <nav class="nav" id="main-navigation" aria-label="Основная навигация">
       <a href="#calc">Калькулятор</a>
       <a href="#methods">Способы доставки</a>
       <a href="#process">Как работаем</a>
       <a href="#guarantee">Гарантии</a>
       <a href="#faq">Вопросы</a>
       <a href="buyout.html">Выкуп и платежи</a>
+      <a class="nav-contact" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Написать в Telegram</a>
+      <a class="nav-contact" data-cfg-href="max" href="#" target="_blank" rel="noopener">Написать в MAX</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-navigation">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+    </button>
     <div class="header__contacts">
       <a class="header__phone" data-cfg-href="tel" data-cfg="phone" href="tel:+79005653383">+7 900 565-33-83</a>
       <a class="btn btn--tg btn--sm" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">
@@ -495,5 +500,6 @@
 
 <script src="config.js"></script>
 <script src="script.js"></script>
+<script src="mobile-menu.js"></script>
 </body>
 </html>

@@ -31,15 +31,33 @@
   }
 
   amountInput.addEventListener('input', updateEstimate);
+  let calculatorInteractionTracked = false;
+  function trackCalculatorInteraction() {
+    if (calculatorInteractionTracked) return;
+    calculatorInteractionTracked = true;
+    trackGoal('buyout_calc_interact');
+  }
+  amountInput.addEventListener('input', trackCalculatorInteraction, { once: true });
   currencyButtons.forEach((button) => button.addEventListener('click', () => {
+    trackCalculatorInteraction();
     currency = button.dataset.currency;
     currencyButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
     updateEstimate();
   }));
 
   document.querySelectorAll('[data-preset]').forEach((link) => link.addEventListener('click', () => {
+    trackGoal('buyout_service_select');
     serviceSelect.value = link.dataset.preset;
   }));
+  serviceSelect.addEventListener('change', () => {
+    trackCalculatorInteraction();
+    trackGoal('buyout_service_select');
+  });
+
+  document.addEventListener('click', (event) => {
+    const goalLink = event.target.closest('[data-goal]');
+    if (goalLink) trackGoal(goalLink.dataset.goal);
+  });
 
   function trackGoal(name) {
     if (typeof window.ym === 'function') window.ym(113700526, 'reachGoal', name);
@@ -113,7 +131,9 @@
       form.elements.consent.checked = true;
       status.textContent = 'Заявка отправлена. Менеджер свяжется с вами и подтвердит условия до оплаты.';
       submitButton.textContent = 'Заявка отправлена';
+      trackGoal('buyout_lead_success');
     } catch (error) {
+      trackGoal('buyout_lead_error');
       status.classList.add('is-error');
       status.textContent = 'Не удалось отправить заявку. Напишите менеджеру в Telegram или позвоните по номеру в шапке.';
       submitting = false;

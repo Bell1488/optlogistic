@@ -90,6 +90,14 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
 .nav { display: flex; gap: clamp(10px, 1.35vw, 18px); margin-left: auto; flex: 0 1 auto; }
 .nav a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 14px; white-space: nowrap; }
 .nav a:hover { color: var(--ink); }
+.nav .nav-contact { display: none; }
+.menu-toggle { display: none; width: 42px; height: 42px; flex: 0 0 42px; align-items: center; justify-content: center; padding: 0; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: #fff; cursor: pointer; }
+.menu-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.menu-toggle svg { display: block; }
+.menu-toggle svg path { transform-box: fill-box; transform-origin: center; transition: transform .15s, opacity .15s; }
+.menu-toggle[aria-expanded="true"] svg path:first-child { transform: translateY(5px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] svg path:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] svg path:last-child { transform: translateY(-5px) rotate(-45deg); }
 .header__contacts { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .header__phone { font: 700 15px 'Manrope', sans-serif; text-decoration: none; white-space: nowrap; }
@@ -299,7 +307,13 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
    АДАПТИВ
    ===================================================================== */
 @media (max-width: 1080px) {
-  .nav { display: none; }
+  .header__inner { position: relative; }
+  .menu-toggle { display: inline-flex; margin-left: auto; }
+  .header__inner > .nav { display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0; z-index: 55; flex-direction: column; gap: 0; margin: 0; padding: 8px 20px 12px; background: #fff; border: 1px solid var(--line); border-top: 0; box-shadow: 0 12px 24px rgba(21, 39, 32, .12); }
+  .header__inner > .nav.is-open { display: flex; }
+  .header__inner > .nav a { padding: 12px 4px; border-bottom: 1px solid var(--line); white-space: normal; }
+  .header__inner > .nav a:last-child { border-bottom: 0; }
+  .header__inner > .nav .nav-contact { display: block; }
   .header__contacts { margin-left: auto; }
   .methods { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .method--hl, .method--hl.reveal.in { transform: none; }
@@ -334,7 +348,7 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
   .hero__text h1 { font-size: 36px; }
   .hero__sub { font-size: 16px; }
   .header__phone { display: none; }
-  .header__inner { gap: 12px; }
+  .header__inner { gap: 8px; }
   .logo__image { width: 170px; height: 46px; }
   .topbar { font-size: 13px; }
   .topbar__link { display: none; }
@@ -356,6 +370,8 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip; }
   .footer__bottom { flex-direction: column; gap: 10px; }
   .header__contacts { gap: 6px; }
   .header__contacts .btn { padding: 8px 9px; font-size: 13px; }
+  .header__contacts { display: none; }
+  .menu-toggle { margin-left: 0; }
   .mobile-bar {
     display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
     padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line);
