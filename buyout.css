@@ -1,7 +1,7 @@
 .buyout-page { --buyout-ink: #18251f; --buyout-muted: #66736c; --buyout-line: #dfe6e1; --buyout-green: #20774a; }
 .buyout-page .header__inner { gap: 18px; }
 .buyout-page .nav { gap: clamp(12px, 1.6vw, 22px); }
-.buyout-hero { padding: 58px 0 76px; background: #eef3ef; }
+.buyout-hero { padding: 58px 0 76px; background-color: #eef3ef; background-image: linear-gradient(90deg, rgba(245, 248, 245, .9) 0%, rgba(245, 248, 245, .78) 43%, rgba(245, 248, 245, .28) 100%), url("hero-back-pays.png"); background-position: center, center right; background-size: cover; }
 .buyout-hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(390px, .82fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
 .buyout-hero__copy { max-width: 610px; }
 .buyout-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #407257; font: 800 11px/1.3 'Manrope', sans-serif; letter-spacing: 1px; }
@@ -96,7 +96,7 @@
   .buyout-page .header__contacts { gap: 6px; }
   .buyout-page .header__contacts .btn { padding: 8px 9px; font-size: 12px; }
   .buyout-page .header__contacts { display: none; }
-  .buyout-hero { padding: 38px 0 52px; }
+  .buyout-hero { padding: 38px 0 52px; background-image: linear-gradient(180deg, rgba(245, 248, 245, .86) 0%, rgba(245, 248, 245, .9) 56%, rgba(245, 248, 245, .78) 100%), url("hero-back-pays.png"); background-position: center, 64% center; }
   .buyout-hero__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .buyout-hero h1 { font-size: 39px; }
   .buyout-lead { font-size: 16px; }
