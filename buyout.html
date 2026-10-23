@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8f6">
+  <meta name="description" content="Выкуп товаров у поставщиков в Китае и оплата заказов 1688, Alipay и WeChat Pay. Рассчитайте сумму и согласуйте условия с менеджером Опт-Логистик до оплаты.">
+  <meta property="og:title" content="Выкуп и оплата поставщикам в Китае — Опт-Логистик">
+  <meta property="og:description" content="Выкуп у поставщиков, оплата 1688, Alipay и WeChat Pay. Предварительный расчёт и согласование условий до платежа.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="pic-ico.png">
+  <link rel="apple-touch-icon" href="pic-ico.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="buyout.css">
+  <title>Выкуп и оплата поставщикам в Китае — Опт-Логистик</title>
+  <script>
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<e.scripts.length;j++){if(e.scripts[j].src===r)return}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=113700526','ym');
+    ym(113700526,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+  </script>
+</head>
+<body class="buyout-page">
+  <noscript><div><img src="https://mc.yandex.ru/watch/113700526" style="position:absolute;left:-9999px" alt=""></div></noscript>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="Опт-Логистик — главная"><img class="logo__image" src="logo.png" alt="Опт-Логистик" width="280" height="70"></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="index.html#calc">Доставка</a>
+        <a href="#services">Выкуп и платежи</a>
+        <a href="#steps">Как это работает</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <div class="header__contacts">
+        <a class="header__phone" data-cfg-href="tel" data-cfg="phone" href="tel:+79005653383">+7 900 565-33-83</a>
+        <a class="btn btn--tg btn--sm" data-cfg-href="telegram" href="#" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn btn--max btn--sm" data-cfg-href="max" href="#" target="_blank" rel="noopener">MAX</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="buyout-hero">
+      <div class="container buyout-hero__grid">
+        <div class="buyout-hero__copy">
+          <p class="buyout-eyebrow"><span></span> ЗАКУПКА И ПЛАТЕЖИ В КИТАЙ</p>
+          <h1>Выкупим товар и оплатим поставщику в Китае</h1>
+          <p class="buyout-lead">1688, Alipay, WeChat Pay или прямой платёж поставщику. Проверим детали заказа, заранее согласуем сумму и сообщим, какие документы будут по вашей операции.</p>
+          <div class="buyout-points">
+            <div><b>01</b><span>Проверяем ссылку, инвойс и реквизиты до оплаты</span></div>
+            <div><b>02</b><span>Согласуем расчёт и порядок действий заранее</span></div>
+            <div><b>03</b><span>При необходимости объединим выкуп с доставкой в РФ</span></div>
+          </div>
+          <a class="btn btn--primary btn--lg" href="#buyout-calculator">Рассчитать платёж <span aria-hidden="true">↓</span></a>
+          <p class="buyout-reassurance">Без оплаты на сайте. Сначала проверим ваш запрос и подтвердим условия.</p>
+        </div>
+
+        <section class="buyout-calc" id="buyout-calculator" aria-labelledby="calc-title">
+          <div class="buyout-calc__top">
+            <div><span class="buyout-step-label">ПРЕДВАРИТЕЛЬНЫЙ РАСЧЁТ</span><h2 id="calc-title">Посчитайте сумму</h2></div>
+            <span class="buyout-calc__icon" aria-hidden="true">¥</span>
+          </div>
+          <label class="buyout-field">
+            <span>Что нужно оплатить</span>
+            <select id="buyout-service" name="service">
+              <option value="1688">Заказ на 1688</option>
+              <option value="supplier">Поставщику по инвойсу</option>
+              <option value="alipay">Пополнение Alipay</option>
+              <option value="wechat">Пополнение WeChat Pay</option>
+              <option value="buyout">Выкуп товара под ключ</option>
+            </select>
+          </label>
+          <div class="buyout-field">
+            <span>Сумма заказа</span>
+            <div class="buyout-amount">
+              <input id="buyout-amount" type="number" min="1" step="any" inputmode="decimal" value="10000" aria-label="Сумма заказа" required>
+              <div class="buyout-currency" role="group" aria-label="Валюта суммы">
+                <button type="button" data-currency="CNY" aria-pressed="true">CNY</button>
+                <button type="button" data-currency="RUB" aria-pressed="false">RUB</button>
+              </div>
+            </div>
+          </div>
+          <div class="buyout-result" aria-live="polite">
+            <div class="buyout-result__line"><span id="buyout-output-label">Ориентир в рублях</span><b id="buyout-output">123 300 ₽</b></div>
+            <div class="buyout-result__details"><span>Ориентировочный курс</span><b id="buyout-rate">1 CNY = 12,33 ₽</b></div>
+            <p>Предварительный расчёт без учёта возможных расходов по конкретному способу оплаты. Итог и доступность операции менеджер подтвердит до внесения средств.</p>
+          </div>
+          <form class="buyout-form" id="buyout-form">
+            <label class="buyout-field"><span>Как к вам обращаться</span><input name="name" type="text" autocomplete="name" placeholder="Имя"></label>
+            <label class="buyout-field"><span>Телефон или Telegram для связи</span><input name="contact" type="text" autocomplete="tel" required minlength="5" placeholder="+7 или @username"></label>
+            <label class="buyout-field"><span>Ссылка на товар, заказ или инвойс <small>(необязательно)</small></span><input name="orderLink" type="url" placeholder="https://..."></label>
+            <label class="buyout-consent"><input name="consent" type="checkbox" required checked><span>Согласен на обработку персональных данных согласно <a href="privacy.html">политике конфиденциальности</a></span></label>
+            <button class="btn btn--primary btn--block btn--lg" id="buyout-submit" type="submit">Получить точный расчёт</button>
+            <p class="buyout-form__status" id="buyout-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="buyout-service-band" id="services">
+      <div class="container">
+        <div class="buyout-section-heading">
+          <span class="buyout-eyebrow"><span></span> ОДНО ОКНО ДЛЯ ЗАКУПКИ</span>
+          <h2>Платёж под ваш сценарий</h2>
+          <p>Выберите задачу — менеджер уточнит, какие данные нужны и доступен ли такой способ оплаты для вашего заказа.</p>
+        </div>
+        <div class="buyout-service-grid">
+          <article class="buyout-service"><span class="buyout-service__number">01</span><h3>Выкуп на 1688</h3><p>Поможем оформить заказ, сверить позиции и провести оплату продавцу. Можно обсудить дальнейшую консолидацию и отправку.</p><a href="#buyout-calculator" data-preset="1688">Рассчитать заказ <span>→</span></a></article>
+          <article class="buyout-service"><span class="buyout-service__number">02</span><h3>Оплата по инвойсу</h3><p>Проверим реквизиты получателя и исходные документы, согласуем сумму и возможные расходы до перевода.</p><a href="#buyout-calculator" data-preset="supplier">Обсудить платёж <span>→</span></a></article>
+          <article class="buyout-service"><span class="buyout-service__number">03</span><h3>Alipay</h3><p>Запрос на пополнение или оплату продавцу. Способ, лимиты и срок подтверждаем после проверки деталей.</p><a href="#buyout-calculator" data-preset="alipay">Пополнить Alipay <span>→</span></a></article>
+          <article class="buyout-service"><span class="buyout-service__number">04</span><h3>WeChat Pay</h3><p>Передайте сумму и тип операции. Менеджер уточнит возможность пополнения или расчёта с конкретным получателем.</p><a href="#buyout-calculator" data-preset="wechat">Обсудить WeChat Pay <span>→</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="buyout-how" id="steps">
+      <div class="container buyout-how__grid">
+        <div><span class="buyout-eyebrow"><span></span> ПОНЯТНЫЙ ПОРЯДОК</span><h2>Сначала условия, потом оплата</h2><p>Не переводите деньги, пока не получили итоговый расчёт и подтверждение деталей операции.</p></div>
+        <ol class="buyout-steps">
+          <li><span>1</span><div><b>Оставьте запрос</b><p>Укажите сумму, способ оплаты и ссылку или инвойс, если они уже есть.</p></div></li>
+          <li><span>2</span><div><b>Получите проверку и расчёт</b><p>Менеджер уточнит получателя, документы, доступность операции и итоговую сумму.</p></div></li>
+          <li><span>3</span><div><b>Подтвердите условия</b><p>До оплаты согласуем курс, расходы, порядок подтверждения платежа и следующий шаг.</p></div></li>
+          <li><span>4</span><div><b>Проведём операцию</b><p>После вашего подтверждения выполняем согласованный платёж или выкуп.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="buyout-proof">
+      <div class="container buyout-proof__inner"><div><span class="buyout-eyebrow"><span></span> ВАЖНО ДЛЯ БИЗНЕСА</span><h2>Никаких скрытых обещаний в калькуляторе</h2></div><div class="buyout-proof__copy"><p>Показанный курс — ориентир для быстрой оценки суммы, а не публичная оферта и не фиксация курса. Комиссия, минимальная сумма, срок и комплект документов зависят от получателя и способа оплаты.</p><p>До перевода вы получите расчёт и сможете подтвердить операцию или отказаться. Если товар нужно привезти в Россию, обсудим оплату и доставку в одном запросе.</p><a href="#buyout-calculator" class="btn btn--outline">Проверить мой платёж</a></div></div>
+    </section>
+
+    <section class="buyout-faq" id="faq">
+      <div class="container buyout-faq__grid"><div><span class="buyout-eyebrow"><span></span> ОТВЕТЫ ДО ЗАЯВКИ</span><h2>Частые вопросы</h2></div><div class="faq">
+        <details><summary>Какой курс использует калькулятор?</summary><p>Для предварительной оценки сейчас используется ориентир 12,33 ₽ за юань. Он не фиксирует условия операции. Менеджер подтвердит доступный курс и итоговую сумму до оплаты.</p></details>
+        <details><summary>Какая комиссия и минимальная сумма?</summary><p>Не подставляем неподтверждённый единый тариф: стоимость и минимальная сумма могут зависеть от получателя и способа платежа. Запросите расчёт для конкретной операции.</p></details>
+        <details><summary>Можно оплатить заказ и затем доставить его в Россию?</summary><p>Да, оставьте ссылку на заказ и сообщите, что требуется доставка. Менеджер уточнит доступность выкупа и отдельно рассчитает логистику.</p></details>
+        <details><summary>Какие документы будут по оплате?</summary><p>Состав документов зависит от маршрута платежа и типа сделки. Уточните задачу до оплаты — менеджер перечислит, что можно предоставить по вашему сценарию.</p></details>
+      </div></div>
+    </section>
+  </main>
+
+  <footer class="buyout-footer"><div class="container buyout-footer__inner"><a href="index.html" class="logo"><img class="logo__image" src="logo.png" alt="Опт-Логистик" width="280" height="70"></a><div><a data-cfg-href="tel" data-cfg="phone" href="tel:+79005653383">+7 900 565-33-83</a><a data-cfg-href="mailto" data-cfg="email" href="mailto:info@opt-logistic.com">info@opt-logistic.com</a></div><a href="index.html">Доставка грузов из Китая</a><a href="privacy.html">Политика конфиденциальности</a></div></footer>
+  <script src="config.js"></script>
+  <script src="buyout.js"></script>
+</body>
+</html>
